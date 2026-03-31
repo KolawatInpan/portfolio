@@ -32,6 +32,13 @@ npm run preview
    - Set `Build and deployment` source to `GitHub Actions`
 4. Push to `main` and wait for the `Deploy Portfolio` workflow to complete.
 
+If workflow fails at `actions/configure-pages` with `Get Pages site failed`:
+
+1. Check repository visibility and plan support for GitHub Pages.
+2. Make sure you have admin permission on the repository.
+3. Open `Settings > Pages` once and confirm Pages is enabled (source can stay on GitHub Actions).
+4. Re-run the failed workflow.
+
 The workflow builds with:
 
 ```bash
