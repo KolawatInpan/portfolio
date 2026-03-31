@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-bg: #140306;
+  --color-brand-bg-top: #2f0208;
+  --color-brand-panel: rgba(24, 8, 10, 0.75);
+  --color-brand-panel-border: rgba(255, 255, 255, 0.12);
+  --color-brand-chip-border: rgba(255, 255, 255, 0.19);
+  --color-brand-accent: #ff5555;
+  --color-brand-muted: #d9c6c6;
+  --font-sans: 'Noto Sans Thai', 'Segoe UI', sans-serif;
+  --font-heading: 'Sora', 'Noto Sans Thai', 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: #f6efef;
+    font-family: var(--font-sans);
+    background: linear-gradient(160deg, var(--color-brand-bg-top) 0%, var(--color-brand-bg) 60%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(circle at 15% 15%, rgba(255, 112, 112, 0.12), transparent 35%),
+      radial-gradient(circle at 85% 70%, rgba(255, 70, 70, 0.08), transparent 35%);
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
