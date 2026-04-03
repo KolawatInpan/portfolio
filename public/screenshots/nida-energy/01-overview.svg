@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">NIDA Energy overview screenshot</title>
+  <desc id="desc">A stylized portfolio screenshot placeholder for the NIDA Energy project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="800" rx="40" fill="url(#bg)"/>
+  <rect x="58" y="58" width="1164" height="684" rx="28" fill="#0b1220" stroke="#273244" stroke-width="4"/>
+  <rect x="98" y="96" width="1080" height="76" rx="20" fill="#111827" stroke="#2a3446"/>
+  <circle cx="140" cy="134" r="14" fill="#f59e0b"/>
+  <circle cx="184" cy="134" r="14" fill="#22c55e"/>
+  <circle cx="228" cy="134" r="14" fill="#60a5fa"/>
+  <text x="300" y="143" fill="#e5e7eb" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="700">NIDA Energy Trading & Management System</text>
+  <rect x="98" y="204" width="330" height="520" rx="24" fill="#111827" stroke="#273244"/>
+  <rect x="458" y="204" width="720" height="240" rx="24" fill="#111827" stroke="#273244"/>
+  <rect x="458" y="468" width="720" height="256" rx="24" fill="#111827" stroke="#273244"/>
+  <rect x="140" y="250" width="250" height="26" rx="13" fill="url(#accent)" opacity="0.9"/>
+  <rect x="140" y="304" width="190" height="18" rx="9" fill="#334155"/>
+  <rect x="140" y="342" width="220" height="18" rx="9" fill="#334155"/>
+  <rect x="140" y="380" width="170" height="18" rx="9" fill="#334155"/>
+  <rect x="508" y="256" width="584" height="36" rx="18" fill="#0f172a"/>
+  <rect x="508" y="318" width="184" height="94" rx="18" fill="#1f2937"/>
+  <rect x="722" y="318" width="184" height="94" rx="18" fill="#1f2937"/>
+  <rect x="936" y="318" width="156" height="94" rx="18" fill="#1f2937"/>
+  <path d="M 150 630 C 240 540, 320 560, 388 500" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 516 628 L 560 572 L 628 604 L 700 520 L 770 550 L 844 486" fill="none" stroke="#60a5fa" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="140" y="610" fill="#e5e7eb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Operational visibility</text>
+  <text x="140" y="648" fill="#94a3b8" font-size="22" font-family="Arial, Helvetica, sans-serif">Trading workflows, status tracking, and management views</text>
+  <text x="520" y="388" fill="#e5e7eb" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">Dashboard metrics</text>
+  <text x="520" y="406" fill="#94a3b8" font-size="18" font-family="Arial, Helvetica, sans-serif">System overview and current state summaries</text>
+</svg>

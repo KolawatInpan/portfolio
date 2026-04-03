@@ -2,13 +2,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-brand-bg: #140306;
-  --color-brand-bg-top: #2f0208;
-  --color-brand-panel: rgba(24, 8, 10, 0.75);
-  --color-brand-panel-border: rgba(255, 255, 255, 0.12);
-  --color-brand-chip-border: rgba(255, 255, 255, 0.19);
-  --color-brand-accent: #ff5555;
-  --color-brand-muted: #d9c6c6;
+  --color-brand-bg: #0f172a;
+  --color-brand-bg-top: #1e293b;
+  --color-brand-panel: rgba(15, 23, 42, 0.6);
+  --color-brand-panel-border: rgba(148, 163, 184, 0.3);
+  --color-brand-chip-border: rgba(148, 163, 184, 0.4);
+  --color-brand-accent: #38bdf8;
+  --color-brand-muted: #cbd5e1;
   --font-sans: 'Noto Sans Thai', 'Segoe UI', sans-serif;
   --font-heading: 'Sora', 'Noto Sans Thai', 'Segoe UI', sans-serif;
 }
@@ -23,9 +23,9 @@
   body {
     margin: 0;
     min-height: 100vh;
-    color: #f6efef;
+    color: #f8fafc;
     font-family: var(--font-sans);
-    background: linear-gradient(160deg, var(--color-brand-bg-top) 0%, var(--color-brand-bg) 60%);
+    background: linear-gradient(160deg, var(--color-brand-bg-top) 0%, var(--color-brand-bg) 65%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -36,8 +36,8 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background-image: radial-gradient(circle at 15% 15%, rgba(255, 112, 112, 0.12), transparent 35%),
-      radial-gradient(circle at 85% 70%, rgba(255, 70, 70, 0.08), transparent 35%);
+    background-image: radial-gradient(circle at 12% 12%, rgba(56, 189, 248, 0.18), transparent 35%),
+      radial-gradient(circle at 86% 72%, rgba(129, 140, 248, 0.16), transparent 38%);
   }
 
   #root {

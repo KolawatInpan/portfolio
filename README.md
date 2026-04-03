@@ -16,6 +16,32 @@ npm install
 npm run dev
 ```
 
+## Local Development with Docker Compose (Realtime)
+
+Use this when you want hot reload without committing or pushing code.
+
+```bash
+docker compose up --build
+```
+
+Then open:
+
+```text
+http://localhost:5173
+```
+
+Notes:
+
+- Code changes are reflected in realtime via Vite HMR.
+- You do not need to commit to see local changes.
+- Commit and push are only needed to redeploy on GitHub Pages.
+
+Stop container:
+
+```bash
+docker compose down
+```
+
 ## Production Build
 
 ```bash

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Japanese Tools overview screenshot</title>
+  <desc id="desc">A stylized portfolio screenshot placeholder for the Japanese Tools project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="800" rx="40" fill="url(#bg)"/>
+  <rect x="64" y="64" width="1152" height="672" rx="30" fill="#0b1220" stroke="#273244" stroke-width="4"/>
+  <rect x="102" y="102" width="1076" height="72" rx="20" fill="#111827" stroke="#273244"/>
+  <text x="140" y="148" fill="#e5e7eb" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="700">Japanese Tools</text>
+  <rect x="102" y="204" width="1076" height="522" rx="28" fill="#111827" stroke="#273244"/>
+  <rect x="138" y="244" width="300" height="450" rx="24" fill="#0f172a"/>
+  <rect x="464" y="244" width="678" height="206" rx="24" fill="#0f172a"/>
+  <rect x="464" y="474" width="678" height="220" rx="24" fill="#0f172a"/>
+  <rect x="174" y="286" width="232" height="22" rx="11" fill="url(#accent)"/>
+  <rect x="174" y="336" width="194" height="16" rx="8" fill="#334155"/>
+  <rect x="174" y="368" width="210" height="16" rx="8" fill="#334155"/>
+  <rect x="174" y="400" width="164" height="16" rx="8" fill="#334155"/>
+  <text x="506" y="300" fill="#fde68a" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="700">日本語</text>
+  <text x="506" y="352" fill="#e5e7eb" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">Dictionary lookup, OCR, and reading support</text>
+  <path d="M 520 574 C 594 520, 664 540, 736 486 C 814 428, 886 452, 972 402 C 1034 366, 1080 378, 1120 340" fill="none" stroke="url(#accent)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="506" y="604" fill="#d1d5db" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">Study tools for kanji, kana, and vocab practice</text>
+  <text x="506" y="632" fill="#94a3b8" font-size="18" font-family="Arial, Helvetica, sans-serif">Supports structured language learning workflows</text>
+</svg>
