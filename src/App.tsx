@@ -19,10 +19,22 @@ const techStacks = [
   'Vite',
   'C',
 ]
+
+const resolveAssetPath = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 const languages = [
   { label: 'Thai' },
-  { label: 'English', detail: 'TOEIC 725', imageUrl: '/img/lang/toeic.png' },
-  { label: 'Japanese', detail: 'JLPT N4', imageUrl: '/img/lang/jlpt.png' },
+  {
+    label: 'English',
+    detail: 'TOEIC 725',
+    imageUrl: resolveAssetPath('img/lang/toeic.png'),
+  },
+  {
+    label: 'Japanese',
+    detail: 'JLPT N4',
+    imageUrl: resolveAssetPath('img/lang/jlpt.png'),
+  },
 ]
 
 function PortfolioListPage() {

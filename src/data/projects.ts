@@ -24,7 +24,7 @@ export type PortfolioProject = {
   screenshots: ProjectScreenshot[]
 }
 
-export const projects: PortfolioProject[] = [
+const rawProjects: PortfolioProject[] = [
   {
     slug: 'nida-energy',
     title: 'NIDA Energy Trading & Management System',
@@ -242,3 +242,15 @@ export const projects: PortfolioProject[] = [
     ],
   },
 ]
+
+const resolveAssetPath = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
+export const projects: PortfolioProject[] = rawProjects.map((project) => ({
+  ...project,
+  previewImageUrl: resolveAssetPath(project.previewImageUrl),
+  screenshots: project.screenshots.map((screenshot) => ({
+    ...screenshot,
+    src: resolveAssetPath(screenshot.src),
+  })),
+}))
