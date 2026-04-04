@@ -58,18 +58,6 @@ function PortfolioListPage() {
   const [expandedTechStack, setExpandedTechStack] = useState(false)
   const displayedTechCount = 6
 
-  const handleLanguageZoomIn = () => {
-    setLanguageZoomLevel((prev) => Math.min(prev + 0.25, 3))
-  }
-
-  const handleLanguageZoomOut = () => {
-    setLanguageZoomLevel((prev) => Math.max(prev - 0.25, 1))
-  }
-
-  const handleLanguageResetZoom = () => {
-    setLanguageZoomLevel(1)
-  }
-
   const handleLanguageImageClick = () => {
     if (languageZoomLevel === 1) {
       setLanguageZoomLevel(2)
@@ -281,11 +269,9 @@ function ProjectDetailPage() {
   const [selectedPreviewIndex, setSelectedPreviewIndex] = useState<number | null>(null)
   const [zoomLevel, setZoomLevel] = useState<number>(1)
 
-  if (!project) {
-    return <Navigate to="/" replace />
-  }
-
-  const selectedPreview = selectedPreviewIndex !== null ? project.screenshots[selectedPreviewIndex] : null
+  const screenshotCount = project?.screenshots.length ?? 0
+  const selectedPreview =
+    selectedPreviewIndex !== null && project ? project.screenshots[selectedPreviewIndex] : null
 
   const handlePrevScreenshot = () => {
     if (selectedPreviewIndex !== null && selectedPreviewIndex > 0) {
@@ -295,7 +281,7 @@ function ProjectDetailPage() {
   }
 
   const handleNextScreenshot = () => {
-    if (selectedPreviewIndex !== null && selectedPreviewIndex < project.screenshots.length - 1) {
+    if (selectedPreviewIndex !== null && selectedPreviewIndex < screenshotCount - 1) {
       setSelectedPreviewIndex(selectedPreviewIndex + 1)
       setZoomLevel(1)
     }
@@ -322,7 +308,7 @@ function ProjectDetailPage() {
   }
 
   useEffect(() => {
-    if (selectedPreview === null) return
+    if (!project || selectedPreview === null) return
 
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === '+' || e.key === '=') {
@@ -332,9 +318,17 @@ function ProjectDetailPage() {
       } else if (e.key === '0') {
         handleResetZoom()
       } else if (e.key === 'ArrowLeft') {
-        handlePrevScreenshot()
+        setSelectedPreviewIndex((prev) => {
+          if (prev === null || prev <= 0) return prev
+          return prev - 1
+        })
+        setZoomLevel(1)
       } else if (e.key === 'ArrowRight') {
-        handleNextScreenshot()
+        setSelectedPreviewIndex((prev) => {
+          if (prev === null || prev >= screenshotCount - 1) return prev
+          return prev + 1
+        })
+        setZoomLevel(1)
       } else if (e.key === 'Escape') {
         setSelectedPreviewIndex(null)
       }
@@ -342,7 +336,11 @@ function ProjectDetailPage() {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [selectedPreview, selectedPreviewIndex, zoomLevel])
+  }, [project, selectedPreview, screenshotCount, zoomLevel])
+
+  if (!project) {
+    return <Navigate to="/" replace />
+  }
 
   return (
     <main className="mx-auto w-[min(1580px,calc(100%-1.5rem))] py-14 max-md:w-[min(1580px,calc(100%-1rem))] max-md:pt-9">
