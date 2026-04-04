@@ -9,7 +9,7 @@ type ProjectCardProps = {
 function ProjectCard({ project, actionLinkClass }: ProjectCardProps) {
   return (
     <article className="animate-[fade-up_0.6s_ease_both] overflow-hidden rounded-2xl border border-brand-panel-border bg-brand-panel shadow-[0_18px_45px_rgba(15,23,42,0.16)] backdrop-blur">
-      <div className="min-h-48 overflow-hidden bg-slate-900/40">
+      <Link to={`/projects/${project.slug}`} className="block min-h-48 overflow-hidden bg-slate-900/40 transition-opacity duration-200 hover:opacity-90">
         <img
           src={project.previewImageUrl}
           alt={project.previewImageAlt}
@@ -21,7 +21,7 @@ function ProjectCard({ project, actionLinkClass }: ProjectCardProps) {
             e.currentTarget.style.display = 'none'
           }}
         />
-      </div>
+      </Link>
 
       <div className="p-5">
         <h2 className="font-heading text-[1.4rem]">

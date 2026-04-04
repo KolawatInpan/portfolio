@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { projects } from './data/projects'
 import ProjectCard from './components/ProjectCard'
@@ -6,7 +6,18 @@ import ProjectCard from './components/ProjectCard'
 const actionLinkClass =
   'block w-full rounded-xl border border-black/10 bg-white/75 px-4 py-3 text-center text-sm font-bold tracking-wide text-slate-700 transition duration-200 hover:-translate-y-0.5 hover:border-brand-accent hover:bg-white'
 
-const skills = ['Backend Development', 'Database', 'REST API Integration']
+const skills = [
+  'Backend Development',
+  'Frontend Development',
+  'REST API Integration',
+  'Data Visualization',
+  'Natural Language Processing',
+  'Database Management',
+  'Docker & Containerization',
+  'Version Control (Git)',
+  'File Handling',
+  'Document Processing',
+]
 const techStacks = [
   'TypeScript',
   'JavaScript',
@@ -43,8 +54,29 @@ function PortfolioListPage() {
     detail: string
     imageUrl: string
   } | null>(null)
+  const [languageZoomLevel, setLanguageZoomLevel] = useState<number>(1)
   const [expandedTechStack, setExpandedTechStack] = useState(false)
   const displayedTechCount = 6
+
+  const handleLanguageZoomIn = () => {
+    setLanguageZoomLevel((prev) => Math.min(prev + 0.25, 3))
+  }
+
+  const handleLanguageZoomOut = () => {
+    setLanguageZoomLevel((prev) => Math.max(prev - 0.25, 1))
+  }
+
+  const handleLanguageResetZoom = () => {
+    setLanguageZoomLevel(1)
+  }
+
+  const handleLanguageImageClick = () => {
+    if (languageZoomLevel === 1) {
+      setLanguageZoomLevel(2)
+    } else {
+      setLanguageZoomLevel(1)
+    }
+  }
 
   return (
     <main className="mx-auto w-[min(1480px,calc(100%-1.5rem))] py-14 max-md:w-[min(1480px,calc(100%-1rem))] max-md:pt-9">
@@ -187,7 +219,10 @@ function PortfolioListPage() {
       {selectedLanguage ? (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4"
-          onClick={() => setSelectedLanguage(null)}
+          onClick={() => {
+            setSelectedLanguage(null)
+            setLanguageZoomLevel(1)
+          }}
         >
           <div
             className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/20 bg-slate-950"
@@ -195,21 +230,44 @@ function PortfolioListPage() {
           >
             <button
               type="button"
-              className="absolute right-3 top-3 rounded-lg border border-white/30 bg-black/60 px-3 py-1.5 text-xs font-bold tracking-wide text-white transition hover:bg-black"
-              onClick={() => setSelectedLanguage(null)}
+              className="absolute right-3 top-3 rounded-lg border border-white/30 bg-black/60 px-3 py-1.5 text-xs font-bold tracking-wide text-white transition hover:bg-black z-10"
+              onClick={() => {
+                setSelectedLanguage(null)
+                setLanguageZoomLevel(1)
+              }}
             >
               Close
             </button>
+
             <div className="border-b border-white/10 p-5">
               <p className="text-xs font-bold tracking-[0.35rem] text-brand-accent">LANGUAGE</p>
               <h3 className="mt-2 font-heading text-2xl text-slate-100">{selectedLanguage.label}</h3>
               <p className="mt-1 text-sm text-brand-muted">{selectedLanguage.detail}</p>
             </div>
-            <img
-              src={selectedLanguage.imageUrl}
-              alt={`${selectedLanguage.label} proficiency preview`}
-              className="h-auto w-full object-contain"
-            />
+
+            <div
+              className="h-64 overflow-auto"
+              style={{ cursor: languageZoomLevel === 1 ? 'zoom-in' : 'zoom-out' }}
+            >
+              <div className="inline-flex items-start justify-start p-4 min-w-full" style={{ height: '100%' }}>
+                <img
+                  src={selectedLanguage.imageUrl}
+                  alt={`${selectedLanguage.label} proficiency preview`}
+                  className="h-auto w-auto object-contain"
+                  style={{
+                    transform: `scale(${languageZoomLevel})`,
+                    transition: 'transform 0.2s ease-out',
+                    cursor: languageZoomLevel === 1 ? 'zoom-in' : 'grab',
+                    transformOrigin: '0 0',
+                    margin: '0 auto',
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleLanguageImageClick()
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       ) : null}
@@ -220,14 +278,71 @@ function PortfolioListPage() {
 function ProjectDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const project = projects.find((item) => item.slug === slug)
-  const [selectedPreview, setSelectedPreview] = useState<{
-    src: string
-    alt: string
-  } | null>(null)
+  const [selectedPreviewIndex, setSelectedPreviewIndex] = useState<number | null>(null)
+  const [zoomLevel, setZoomLevel] = useState<number>(1)
 
   if (!project) {
     return <Navigate to="/" replace />
   }
+
+  const selectedPreview = selectedPreviewIndex !== null ? project.screenshots[selectedPreviewIndex] : null
+
+  const handlePrevScreenshot = () => {
+    if (selectedPreviewIndex !== null && selectedPreviewIndex > 0) {
+      setSelectedPreviewIndex(selectedPreviewIndex - 1)
+      setZoomLevel(1)
+    }
+  }
+
+  const handleNextScreenshot = () => {
+    if (selectedPreviewIndex !== null && selectedPreviewIndex < project.screenshots.length - 1) {
+      setSelectedPreviewIndex(selectedPreviewIndex + 1)
+      setZoomLevel(1)
+    }
+  }
+
+  const handleZoomIn = () => {
+    setZoomLevel((prev) => Math.min(prev + 0.25, 3))
+  }
+
+  const handleZoomOut = () => {
+    setZoomLevel((prev) => Math.max(prev - 0.25, 1))
+  }
+
+  const handleResetZoom = () => {
+    setZoomLevel(1)
+  }
+
+  const handleImageClick = () => {
+    if (zoomLevel === 1) {
+      setZoomLevel(2)
+    } else {
+      setZoomLevel(1)
+    }
+  }
+
+  useEffect(() => {
+    if (selectedPreview === null) return
+
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === '+' || e.key === '=') {
+        handleZoomIn()
+      } else if (e.key === '-') {
+        handleZoomOut()
+      } else if (e.key === '0') {
+        handleResetZoom()
+      } else if (e.key === 'ArrowLeft') {
+        handlePrevScreenshot()
+      } else if (e.key === 'ArrowRight') {
+        handleNextScreenshot()
+      } else if (e.key === 'Escape') {
+        setSelectedPreviewIndex(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [selectedPreview, selectedPreviewIndex, zoomLevel])
 
   return (
     <main className="mx-auto w-[min(1580px,calc(100%-1.5rem))] py-14 max-md:w-[min(1580px,calc(100%-1rem))] max-md:pt-9">
@@ -321,14 +436,14 @@ function ProjectDetailPage() {
         <aside className="rounded-2xl border border-brand-panel-border bg-brand-panel p-6 animate-[fade-up_0.66s_ease_both] lg:sticky lg:top-6">
           <div className="rounded-xl border border-white/10 bg-black/20 p-4">
             <h2 className="font-heading mb-2.5 text-lg">Preview Gallery</h2>
-            <p className="mb-3 text-sm text-brand-muted">Click image to zoom</p>
+            <p className="mb-3 text-sm text-brand-muted">Click image to zoom, drag to pan</p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-              {project.screenshots.map((preview) => (
+              {project.screenshots.map((preview, index) => (
                 <button
                   key={preview.src}
                   type="button"
                   className="overflow-hidden rounded-xl border border-white/10 bg-slate-950/40 text-left transition hover:border-brand-accent"
-                  onClick={() => setSelectedPreview(preview)}
+                  onClick={() => setSelectedPreviewIndex(index)}
                 >
                   <img
                     src={preview.src}
@@ -350,25 +465,78 @@ function ProjectDetailPage() {
       {selectedPreview ? (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4"
-          onClick={() => setSelectedPreview(null)}
+          onClick={() => setSelectedPreviewIndex(null)}
         >
+          {/* Left Arrow - Outside Image */}
+          <button
+            type="button"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-lg border border-white/30 bg-black/60 px-4 py-4 text-2xl font-bold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-50 max-md:hidden"
+            onClick={(e) => {
+              e.stopPropagation()
+              handlePrevScreenshot()
+            }}
+            disabled={selectedPreviewIndex === 0}
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
           <div
             className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-white/20 bg-slate-950"
             onClick={(event) => event.stopPropagation()}
           >
             <button
               type="button"
-              className="absolute right-3 top-3 rounded-lg border border-white/30 bg-black/60 px-3 py-1.5 text-xs font-bold tracking-wide text-white transition hover:bg-black"
-              onClick={() => setSelectedPreview(null)}
+              className="absolute right-3 top-3 rounded-lg border border-white/30 bg-black/60 px-3 py-1.5 text-xs font-bold tracking-wide text-white transition hover:bg-black z-10"
+              onClick={() => setSelectedPreviewIndex(null)}
             >
               Close
             </button>
-            <img
-              src={selectedPreview.src}
-              alt={selectedPreview.alt}
-              className="max-h-[90vh] w-full object-contain"
-            />
+
+            <div
+              className="h-[90vh] overflow-auto"
+              style={{ cursor: zoomLevel === 1 ? 'zoom-in' : 'zoom-out' }}
+            >
+              <div className="inline-flex items-start justify-start p-4 min-w-full" style={{ height: '100%' }}>
+                <img
+                  src={selectedPreview.src}
+                  alt={selectedPreview.alt}
+                  className="h-auto w-auto object-contain"
+                  style={{
+                    transform: `scale(${zoomLevel})`,
+                    transition: 'transform 0.2s ease-out',
+                    cursor: zoomLevel === 1 ? 'zoom-in' : 'grab',
+                    transformOrigin: '0 0',
+                    margin: '0 auto',
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleImageClick()
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Counter */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/30 bg-black/60 px-3 py-1.5 text-xs font-bold text-white">
+              {(selectedPreviewIndex ?? 0) + 1} / {project.screenshots.length}
+              {zoomLevel > 1 && <span className="ml-2 text-[11px]">({Math.round(zoomLevel * 100)}%)</span>}
+            </div>
           </div>
+
+          {/* Right Arrow - Outside Image */}
+          <button
+            type="button"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-lg border border-white/30 bg-black/60 px-4 py-4 text-2xl font-bold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-50 max-md:hidden"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleNextScreenshot()
+            }}
+            disabled={selectedPreviewIndex === project.screenshots.length - 1}
+            aria-label="Next image"
+          >
+            ›
+          </button>
         </div>
       ) : null}
     </main>
