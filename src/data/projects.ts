@@ -43,7 +43,7 @@ const rawProjects: PortfolioProject[] = [
     ],
     techStack: [
       'React',
-      'TypeScript',
+      'Javascript',
       'TailwindCSS',
       'Python',
       'FastAPI',

@@ -57,9 +57,13 @@ function PortfolioListPage() {
             Kolawat Inpan
           </h1>
           <p className="mt-4 max-w-2xl text-[clamp(1rem,2.2vw,1.2rem)] text-brand-muted">
-            Frontend-focused software developer building practical products with
-            TypeScript. I care about clean interfaces, maintainable code, and
-            smooth user experiences.
+            I'm interested in web development, especially backend systems and
+            database-focused work.
+          </p>
+          <p className="mt-4 max-w-2xl text-[clamp(1rem,2.2vw,1.2rem)] text-brand-muted">
+            I enjoy data analysis and data visualization, and I also have a
+            strong interest in languages while continuing to improve through
+            hands-on projects.
           </p>
           <div className="mt-6 flex items-center gap-3">
             <a
@@ -162,16 +166,9 @@ function PortfolioListPage() {
       </section>
 
       <header className="mt-14 animate-[fade-up_0.55s_ease_both] text-center">
-        <p className="mb-4 inline-block text-xs font-bold tracking-[0.35rem] text-brand-accent">
-          PORTFOLIO
-        </p>
         <h2 className="font-heading text-[clamp(2rem,6vw,4.25rem)] leading-[1.04] tracking-[-0.02em] text-slate-100">
-          Featured <span className="text-brand-accent">Creations</span>
+          Projects
         </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-[clamp(1rem,2.2vw,1.25rem)] text-brand-muted">
-          A selection of digital products focused on scale, reliability, and
-          business outcomes.
-        </p>
       </header>
 
       <section
