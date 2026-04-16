@@ -90,9 +90,70 @@ function PortfolioListPage() {
               href="https://github.com/KolawatInpan"
               target="_blank"
               rel="noreferrer"
-              className="rounded-xl border border-black/10 bg-white/80 px-5 py-3 text-sm font-bold tracking-wide text-slate-700 transition duration-200 hover:-translate-y-0.5 hover:border-brand-accent hover:bg-white"
+              aria-label="GitHub"
+              title="GitHub"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-black/10 bg-white/80 text-slate-700 transition duration-200 hover:-translate-y-0.5 hover:border-brand-accent hover:bg-white"
             >
-              GitHub Contact
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-5 w-5"
+                aria-hidden="true"
+              >
+                <path d="M12 1.8a10.2 10.2 0 0 0-3.22 19.88c.5.09.68-.22.68-.49v-1.9c-2.78.61-3.37-1.2-3.37-1.2-.45-1.17-1.11-1.48-1.11-1.48-.91-.63.07-.62.07-.62 1 .07 1.52 1.04 1.52 1.04.9 1.56 2.36 1.1 2.93.84.09-.66.35-1.1.63-1.35-2.22-.25-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.74-.1-.25-.45-1.29.1-2.69 0 0 .84-.27 2.75 1.05a9.38 9.38 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.69.64.71 1.03 1.62 1.03 2.74 0 3.95-2.35 4.83-4.59 5.08.36.32.68.95.68 1.91v2.83c0 .27.18.59.69.49A10.2 10.2 0 0 0 12 1.8Z" />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.renshuu.org/me/839633&profile"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="renshuu"
+              title="renshuu"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-black/10 bg-white/80 text-slate-700 transition duration-200 hover:-translate-y-0.5 hover:border-brand-accent hover:bg-white"
+            >
+              <img
+                src={resolveAssetPath('img/icon/renshuu.png')}
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-6 object-contain"
+              />
+            </a>
+          </div>
+
+          <div className="mt-4 space-y-2 text-sm text-brand-muted">
+            <a
+              href="tel:0960853055"
+              className="flex w-full items-center gap-2 font-semibold text-slate-100 transition hover:text-brand-accent"
+              aria-label="Phone 0960853055"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.58.57 1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1A17.49 17.49 0 0 1 2.99 4a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.58 1 1 0 0 1-.24 1l-2.2 2.21Z" />
+              </svg>
+              <span>0960853055</span>
+            </a>
+            <a
+              href="mailto:kolawatinpan@gmail.com"
+              className="flex w-full items-center gap-2 font-semibold text-slate-100 transition hover:text-brand-accent"
+              aria-label="Email kolawatinpan@gmail.com"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 3.24-8 5-8-5V6l8 5 8-5v1.24Z" />
+              </svg>
+              <span>kolawatinpan@gmail.com</span>
             </a>
           </div>
         </header>
